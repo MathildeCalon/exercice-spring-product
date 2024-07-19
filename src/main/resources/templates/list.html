@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List of products</title>
+</head>
+<body>
+<nav>
+    <a th:href="@{/}">Accueil</a></nav>
+<h1>Liste des produits</h1>
+<ul th:if="${list != null}">
+    <li th:each="p : ${list}">
+        <a th:href="@{/detail/{id}(id=${p.getId()})}"><span th:text="${p.getName()}"></span> </a>
+    </li>
+
+</ul>
+</body>
+</html>
