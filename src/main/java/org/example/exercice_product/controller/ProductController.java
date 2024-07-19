@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.UUID;
@@ -35,5 +36,12 @@ public class ProductController {
         Product product = productService.getProductById(id);
         model.addAttribute("product", product);
         return "detail";
+    }
+
+    @GetMapping("/search")
+    public String search(@RequestParam("max") double max, @RequestParam("cat") String category, Model model){
+        List<Product> list = productService.getProductByPrice(max, category);
+        model.addAttribute("list", list);
+        return "list";
     }
 }

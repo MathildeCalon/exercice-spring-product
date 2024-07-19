@@ -43,7 +43,7 @@ public class ProductService {
 
     public List<Product> getAllProducts() { return products.values().stream().toList();}
     public Product getProductById(UUID id) { return products.get(id);}
-//    public List<Product> getProductByPrice(double minPrice, double maxPrice) {
-//
-//    }
+    public List<Product> getProductByPrice(double maxPrice, String category) {
+        return products.values().stream().filter(product -> product.getPrice() <= maxPrice && product.getCategory().equals(category)).toList();
+    }
 }
