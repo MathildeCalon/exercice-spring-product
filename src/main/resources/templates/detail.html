@@ -2,14 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <span th:replace="~{home :: bootstrap}"></span>
     <title>List of products</title>
 </head>
-<body>
-<nav>
-    <a th:href="@{/}">Accueil</a></nav>
-<a th:href="@{/list}">Liste des produits</a></nav>
+<body class="container">
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+        <a th:href="@{/list}" class="navbar-brand mb-0 h1">Liste des produits</a>
+        <a th:href="@{/}" class="navbar-brand mb-0 h1">Accueil</a>
+
+    </div>
+</nav>
 <h1>Information du produit</h1>
-<ul th:if="${product != null}">
+<ul th:if="${product != null}" class="border rounded bg-info-subtle">
     <li>
         Produit : <span th:text="${product.getName()}"></span>
     </li>
